@@ -43,6 +43,7 @@ def start():
             try:
                 yt = YouTube(link)
                 yt.streams.filter(progressive=1, file_extension="mp4")
+                yt = yt.streams.get_highest_resolution()
                 yt.streams.first().download(filepath)
                 messagebox.showinfo("YouTube Downloader", "Downloaded Successfully")
             except:
